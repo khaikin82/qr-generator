@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tạo mã QR chuyển khoản</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"
+      defer
+    ></script>
     <script src="app.js" defer></script>
   </head>
   <body>
     <main class="app-shell">
       <section class="workspace" aria-label="Tạo mã QR chuyển khoản ngân hàng">
         <div class="form-panel">
-          <p class="eyebrow">VietQR</p>
+          <p class="eyebrow">KhaiQR</p>
           <h1>Tạo mã QR chuyển khoản</h1>
-          <p class="intro">Nhập thông tin tài khoản thụ hưởng để tạo mã QR cho ứng dụng ngân hàng.</p>
+          <p class="intro">
+            Nhập thông tin tài khoản thụ hưởng để tạo mã QR cho ứng dụng ngân
+            hàng.
+          </p>
 
           <form id="qrForm" class="qr-form">
             <label class="field bank-field">
@@ -30,7 +36,11 @@
                 aria-expanded="false"
                 required
               />
-              <ul id="bankSuggestions" class="bank-suggestions hidden" role="listbox"></ul>
+              <ul
+                id="bankSuggestions"
+                class="bank-suggestions hidden"
+                role="listbox"
+              ></ul>
             </label>
 
             <label class="field">
@@ -52,13 +62,16 @@
                 name="accountName"
                 autocomplete="name"
                 placeholder="Ví dụ: NGUYEN VAN A"
+                value="NGUYEN VAN A"
                 required
               />
             </label>
 
             <div class="actions">
               <button type="submit">Tạo QR</button>
-              <button type="button" id="downloadBtn" class="secondary" disabled>Tải PNG</button>
+              <button type="button" id="downloadBtn" class="secondary" disabled>
+                Tải PNG
+              </button>
             </div>
           </form>
         </div>
@@ -67,8 +80,12 @@
           <div class="qr-card">
             <div id="qrCanvasWrap" class="qr-box">
               <span class="empty-state">QR sẽ xuất hiện ở đây</span>
+              <img
+                id="fallbackQr"
+                class="fallback-qr hidden"
+                alt="Mã QR chuyển khoản"
+              />
             </div>
-            <img id="fallbackQr" class="fallback-qr hidden" alt="Mã QR chuyển khoản" />
           </div>
 
           <dl class="summary">
@@ -88,7 +105,11 @@
 
           <label class="payload-field">
             <span>Nội dung QR</span>
-            <textarea id="payloadOutput" readonly placeholder="Payload VietQR sẽ hiển thị sau khi tạo"></textarea>
+            <textarea
+              id="payloadOutput"
+              readonly
+              placeholder="Payload VietQR sẽ hiển thị sau khi tạo"
+            ></textarea>
           </label>
         </div>
       </section>

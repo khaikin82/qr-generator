@@ -48,7 +48,7 @@ textarea {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 440px;
   gap: 20px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .form-panel,
@@ -239,9 +239,12 @@ button.secondary:hover:not(:disabled) {
 }
 
 .qr-card {
-  display: grid;
-  place-items: center;
-  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 360px;
+  flex: 0 0 360px;
+  padding: 20px;
   border: 1px dashed #b8c4d3;
   border-radius: 8px;
   background:
@@ -253,13 +256,26 @@ button.secondary:hover:not(:disabled) {
   display: grid;
   place-items: center;
   width: min(100%, 320px);
+  max-width: 320px;
+  aspect-ratio: 1;
+  flex: none;
+}
+
+.qr-box canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 320px;
+  max-height: 320px;
   aspect-ratio: 1;
 }
 
-.qr-box canvas,
 .fallback-qr {
+  display: block;
   width: min(100%, 320px);
-  height: min(100%, 320px);
+  height: auto;
+  object-fit: contain;
+  flex: none;
 }
 
 .empty-state {
@@ -322,6 +338,7 @@ button.secondary:hover:not(:disabled) {
   }
 
   .qr-card {
-    min-height: 300px;
+    height: 340px;
+    flex-basis: 340px;
   }
 }
