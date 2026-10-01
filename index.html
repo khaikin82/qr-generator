@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tạo mã QR chuyển khoản</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Tạo mã QR chuyển khoản ngân hàng">
+        <div class="form-panel">
+          <p class="eyebrow">VietQR</p>
+          <h1>Tạo mã QR chuyển khoản</h1>
+          <p class="intro">Nhập thông tin tài khoản thụ hưởng để tạo mã QR cho ứng dụng ngân hàng.</p>
+
+          <form id="qrForm" class="qr-form">
+            <label class="field bank-field">
+              <span>Ngân hàng thụ hưởng</span>
+              <input
+                id="bank"
+                name="bank"
+                autocomplete="off"
+                placeholder="Nhập tên ngân hàng hoặc mã BIN"
+                role="combobox"
+                aria-autocomplete="list"
+                aria-controls="bankSuggestions"
+                aria-expanded="false"
+                required
+              />
+              <ul id="bankSuggestions" class="bank-suggestions hidden" role="listbox"></ul>
+            </label>
+
+            <label class="field">
+              <span>Số tài khoản thụ hưởng</span>
+              <input
+                id="accountNumber"
+                name="accountNumber"
+                inputmode="numeric"
+                autocomplete="off"
+                placeholder="Nhập số tài khoản"
+                required
+              />
+            </label>
+
+            <label class="field">
+              <span>Tên chủ tài khoản</span>
+              <input
+                id="accountName"
+                name="accountName"
+                autocomplete="name"
+                placeholder="Ví dụ: NGUYEN VAN A"
+                required
+              />
+            </label>
+
+            <div class="actions">
+              <button type="submit">Tạo QR</button>
+              <button type="button" id="downloadBtn" class="secondary" disabled>Tải PNG</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="result-panel">
+          <div class="qr-card">
+            <div id="qrCanvasWrap" class="qr-box">
+              <span class="empty-state">QR sẽ xuất hiện ở đây</span>
+            </div>
+            <img id="fallbackQr" class="fallback-qr hidden" alt="Mã QR chuyển khoản" />
+          </div>
+
+          <dl class="summary">
+            <div>
+              <dt>Ngân hàng</dt>
+              <dd id="summaryBank">-</dd>
+            </div>
+            <div>
+              <dt>Số tài khoản</dt>
+              <dd id="summaryAccount">-</dd>
+            </div>
+            <div>
+              <dt>Chủ tài khoản</dt>
+              <dd id="summaryName">-</dd>
+            </div>
+          </dl>
+
+          <label class="payload-field">
+            <span>Nội dung QR</span>
+            <textarea id="payloadOutput" readonly placeholder="Payload VietQR sẽ hiển thị sau khi tạo"></textarea>
+          </label>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
